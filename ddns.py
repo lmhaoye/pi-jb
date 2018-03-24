@@ -37,8 +37,9 @@ def update_record(cip, old):
 
 
 def update_pi(cip):
-    postdata = {'ip': ip}
+    postdata = {'ip': cip}
     r = requests.post('http://pi.lmhaoye.com/pi/ip', data=postdata)
+    print(r.status_code)
     return r.text == 'ok'
 
 
