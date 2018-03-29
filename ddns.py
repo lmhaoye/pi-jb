@@ -37,8 +37,9 @@ def update_record(cip, old):
 
 
 def update_pi(cip):
-    postdata = {'ip': ip}
+    postdata = {'ip': cip}
     r = requests.post('http://pi.lmhaoye.com/pi/ip', data=postdata)
+    print(r.text)
     return r.text == 'ok'
 
 
@@ -49,7 +50,9 @@ def connect_dns():
 
     req = DescribeDomainRecordInfoRequest.DescribeDomainRecordInfoRequest()
     req.set_RecordId(RID)
-    resp = client.do_action_with_exception(req)
+    resp = client.do_action_with_exception(req).decode('utf-8')
+#    update_pi(cip)
+    print(cip)
     old = json.loads(resp)
     if cip == old['Value']:
         return True
