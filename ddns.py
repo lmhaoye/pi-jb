@@ -31,7 +31,7 @@ def update_record(cip, old):
     req.set_RR(old['RR'])
     req.set_Type(old['Type'])
     req.set_Value(cip)
-    resp = client.do_action_with_exception(req)
+    resp = client.do_action_with_exception(req).decode('utf-8')
     print(resp)
     return True
 
@@ -51,8 +51,11 @@ def connect_dns():
     req = DescribeDomainRecordInfoRequest.DescribeDomainRecordInfoRequest()
     req.set_RecordId(RID)
     resp = client.do_action_with_exception(req).decode('utf-8')
+<<<<<<< HEAD
 #    update_pi(cip)
     print(cip)
+=======
+>>>>>>> 4b21365cfba5b73e12e117732e286e25616f265a
     old = json.loads(resp)
     if cip == old['Value']:
         return True
