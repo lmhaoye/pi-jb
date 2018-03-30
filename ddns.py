@@ -25,7 +25,6 @@ def ip():
 
 
 def update_record(cip, old):
-    update_pi(cip)
     req = UpdateDomainRecordRequest.UpdateDomainRecordRequest()
     req.set_RecordId(RID)
     req.set_RR(old['RR'])
@@ -51,7 +50,7 @@ def connect_dns():
     req = DescribeDomainRecordInfoRequest.DescribeDomainRecordInfoRequest()
     req.set_RecordId(RID)
     resp = client.do_action_with_exception(req).decode('utf-8')
-#    update_pi(cip)
+	update_pi(cip)
     print(cip)
     old = json.loads(resp)
     if cip == old['Value']:
