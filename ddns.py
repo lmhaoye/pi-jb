@@ -8,8 +8,7 @@ from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkalidns.request.v20150109 import UpdateDomainRecordRequest, DescribeDomainRecordInfoRequest
 
-logging.basicConfig(filename=os.path.join(os.getcwd(),'ddns.log'),level=logging.DEBUG)
-
+logging.basicConfig(filename=os.path.join(os.getcwd(),'ddns.log'),level=logging.DEBUG,format='%(asctime)s %(levelname)-8s: %(message)s')
 
 DOMAIN = 'lmhaoye.com'
 RID = '3816854167196672'
