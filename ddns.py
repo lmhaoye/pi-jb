@@ -1,10 +1,15 @@
 import requests
 import json
+import logging
+import os
 
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkalidns.request.v20150109 import UpdateDomainRecordRequest, DescribeDomainRecordInfoRequest
+
+logging.basicConfig(filename=os.path.join(os.getcwd(),'ddns.log'),level=logging.DEBUG)
+
 
 DOMAIN = 'lmhaoye.com'
 RID = '3816854167196672'
@@ -38,7 +43,7 @@ def update_record(cip, old):
 def update_pi(cip):
     postdata = {'ip': cip}
     r = requests.post('http://pi.lmhaoye.com/pi/ip', data=postdata)
-    print(r.text)
+    logging.info(r.text)
     return r.text == 'ok'
 
 
@@ -51,7 +56,7 @@ def connect_dns():
     req.set_RecordId(RID)
     resp = client.do_action_with_exception(req).decode('utf-8')
     update_pi(cip)
-    print(cip)
+    logging.info(cip)
     old = json.loads(resp)
     if cip == old['Value']:
         return True
