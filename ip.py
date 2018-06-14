@@ -14,6 +14,7 @@ def getLocalIP():
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(('114.114.114.114', 0))
         ip = s.getsockname()[0]
+        print(ip)
     except:
         name = socket.gethostname()
         ip = socket.gethostbyname(name)
