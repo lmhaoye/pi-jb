@@ -10,12 +10,12 @@ from aliyunsdkalidns.request.v20150109 import UpdateDomainRecordRequest, Describ
 
 logging.basicConfig(filename=os.path.join(os.getcwd(),'ddns.log'),level=logging.DEBUG,format='%(asctime)s %(levelname)-8s: %(message)s')
 
-DOMAIN = 'lmhaoye.com'
-RID = '3816854167196672'
+DOMAIN = '*.com'
+RID = '*'
 
 client = AcsClient(
-    "LTAIgx4gRwOdGDyP",
-    "lhO72l4zvD3C8prI1aWcfCROXdCrmX",
+    "a",
+    "b",
     "cn-hangzhou"
 )
 
